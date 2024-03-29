@@ -1,13 +1,13 @@
 <html>
 <head>
-    <title>Form</title>
+    <title>BloodGroup</title>
 </head>
 <body>
   
 
     <form method="" action="" enctype="">
     <fieldset style = "width: 200px">
-            <legend>Gender</legend>  
+            <legend>BloodGroup</legend>  
         Blood Group:        
         <select name=""> 
           <option value="">A+</option>
