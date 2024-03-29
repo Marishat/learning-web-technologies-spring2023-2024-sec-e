@@ -19,15 +19,16 @@
 
 
 <?php
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+    $email = isset($_POST['email']) ? $_POST['email'] : null;
 
     if (isset($_POST['option']) && count($_POST['option']) >= 2) {
-		header("location: 6.php");
-		exit();
- 
+        
+        header("location: 6.php");
+        exit();
     } else {
-        echo "At least two of them must be selected";
+        echo "At least two of them must be selected.";
     }
-
+}
 ?>
