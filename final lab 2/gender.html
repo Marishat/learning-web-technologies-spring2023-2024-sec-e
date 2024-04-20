@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form id="genderForm">
+        <fieldset>
+            <legend>Gender</legend>  
+            <input type="radio" name="gender" id="maleRadio" value="male" /> <label for="maleRadio">Male</label>
+            <input type="radio" name="gender" id="femaleRadio" value="female" /> <label for="femaleRadio">Female</label>
+            <input type="radio" name="gender" id="otherRadio" value="other" /> <label for="otherRadio">Other</label><br>
+        </fieldset>
+        <span id="genderError" style="color: red;"></span><br>
+        <input type="submit" value="Submit"formaction="dob.html"><br>
+    </form>
+
+    <script>
+        document.getElementById("genderForm").addEventListener("submit", function(event) {
+            var genderRadios = document.getElementsByName("gender");
+            var genderError = document.getElementById("genderError");
+            var isChecked = false;
+
+            for (var i = 0; i < genderRadios.length; i++) {
+                if (genderRadios[i].checked) {
+                    isChecked = true;
+                    break;
+                }
+            }
+
+            if (!isChecked) {
+                genderError.textContent = "Please select a gender";
+                event.preventDefault();
+            } else {
+                genderError.textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>
