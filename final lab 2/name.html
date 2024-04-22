@@ -7,20 +7,40 @@
     <script>
         function validateForm() {
             var nameInput = document.getElementById("name").value.trim();
-            var nameRegex = /^[a-zA-Z][a-zA-Z .-]*$/;
-            var words = nameInput.split(" ").filter(word => word !== ""); // Filter out empty strings
+            var isValid = true;
             
+            // Check if name is empty
             if (nameInput === "") {
                 alert("Name cannot be empty");
-                return false;
-            } else if (words.length < 2) {
-                alert("Name must contain at least two words");
-                return false;
-            } else if (!nameRegex.test(nameInput)) {
-                alert("Name can only contain letters, dot (.), or dash (-), and must start with a letter");
-                return false;
+                isValid = false;
+            } else {
+                // Split the name into words
+                var words = nameInput.split(" ").filter(word => word !== "");
+                
+                // Check if there are at least two words
+                if (words.length < 2) {
+                    alert("Name must contain at least two words");
+                    isValid = false;
+                } else {
+                    // Check each word for valid characters
+                    for (var i = 0; i < words.length; i++) {
+                        var word = words[i];
+                        for (var j = 0; j < word.length; j++) {
+                            var char = word[j];
+                            // Check if character is a letter, dot (.), or dash (-)
+                            if (!((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z') || char === '.' || char === '-')) {
+                                alert("Name can only contain letters, dot (.), or dash (-), and must start with a letter");
+                                isValid = false;
+                                break;
+                            }
+                        }
+                        // Break out of outer loop if invalid character found
+                        if (!isValid) break;
+                    }
+                }
             }
-            return true;
+            
+            return isValid;
         }
     </script>
 </head>
